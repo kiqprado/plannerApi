@@ -45,15 +45,15 @@ export async function updateTrip( app: FastifyInstance) {
     }
 
     if(!participant.is_owner) {
-      throw new ClientError("Only Trip owner can change details")
+      throw new ClientError("403. Only Trip owner can change details")
     }
 
     if(dayjs(starts_at).isBefore(new Date())) {
-      throw new ClientError("Trip starts date must be in the future")
+      throw new ClientError("400. Trip starts date must be in the future")
     }
 
     if(dayjs(ends_at).isBefore(starts_at)) {
-      throw new ClientError("Trip end date must be after the start date")
+      throw new ClientError("400. Trip end date must be after the start date")
     }
 
     const updateTrip = await prisma.trip.update({
