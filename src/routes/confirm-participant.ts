@@ -29,7 +29,7 @@ export async function confirmParticipants(app: FastifyInstance) {
     }
 
     if(participant.is_confirmed) {
-      return reply.redirect(`${env.WEB_BASE_URL}/participants/${participant.trip_id}/confirmed`)
+      return reply.redirect(`${env.WEB_BASE_URL}/participants/${participant.id}/confirmed?tripId=${participant.trip_id}`)
     }
 
     await prisma.participant.update({
@@ -37,7 +37,7 @@ export async function confirmParticipants(app: FastifyInstance) {
       data: { is_confirmed: true}
     })
 
-    return reply.redirect(`${env.WEB_BASE_URL}/participants/${participant.trip_id}/confirmed`)
+    return reply.redirect(`${env.WEB_BASE_URL}/participants/${participant.id}/confirmed?tripId=${participant.trip_id}`)
   })
 
   app.withTypeProvider<ZodTypeProvider>().patch("/participants/:participantId/confirm", {
@@ -54,7 +54,10 @@ export async function confirmParticipants(app: FastifyInstance) {
     const { participantId } = req.params
     const { name, email } = req.body
 
-    const participant = await prisma.participant.findUnique({ where: { id: participantId }})
+    const participant = await prisma.participant.findUnique({ 
+      where: { id: participantId },
+      include: { trip: true }
+    })
 
     if(!participant) {
       throw new ClientError("Participant not Found!")
@@ -63,7 +66,7 @@ export async function confirmParticipants(app: FastifyInstance) {
     if(participant.is_confirmed) {
       return reply.status(409).send({
         message: "The current Participant is already confirmed on trip.",
-        tripId: participant.trip_id
+        tripId: participant.trip.id
       })
     }
 
@@ -79,6 +82,6 @@ export async function confirmParticipants(app: FastifyInstance) {
       }
     })
 
-    return reply.send({ ok: true, tripId: participant.trip_id})
+    return reply.send({ ok: true, tripId: participant.trip.id})
   })
 }

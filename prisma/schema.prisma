@@ -31,7 +31,7 @@ model Participant {
   is_confirmed Boolean @default(false)
   is_owner     Boolean @default(false)
 
-  trip    Trip   @relation(fields: [trip_id], references: [id])
+  trip    Trip   @relation(fields: [trip_id], references: [id], onDelete: Cascade)
   trip_id String
 
   @@map("participants")
@@ -43,7 +43,7 @@ model Activity {
   title     String
   occurs_at DateTime
 
-  trip    Trip   @relation(fields: [trip_id], references: [id])
+  trip    Trip   @relation(fields: [trip_id], references: [id], onDelete: Cascade)
   trip_id String
 
   @@map("activities")
@@ -55,7 +55,7 @@ model Links {
   title String
   url   String
 
-  trip    Trip   @relation(fields: [trip_id], references: [id])
+  trip    Trip   @relation(fields: [trip_id], references: [id], onDelete: Cascade)
   trip_id String
 
   @@map("links")

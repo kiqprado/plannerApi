@@ -9,6 +9,8 @@ import { createTrip } from './routes/create-trip'
 import { updateTrip } from './routes/update-trip'
 import { getTripDetails } from './routes/get-trip-details'
 
+import { deleteTrip } from './routes/delete-trip';
+
 import { confirmParticipants } from './routes/confirm-participant'
 import { getParticipants } from './routes/get-participants'
 import { getParticipant } from './routes/get-participant'
@@ -37,6 +39,7 @@ app.setSerializerCompiler(serializerCompiler)
 app.setErrorHandler(errorHandler)
 
 app.register(createTrip)
+app.register(deleteTrip)
 app.register(updateTrip)
 app.register(getTripDetails)
 app.register(confirmParticipants)
