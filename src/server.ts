@@ -61,8 +61,11 @@ app.register(createLink)
 app.register(getLinks)
 app.register(deleteLink)
 
+const PORT = process.env.PORT || 3333
+
 app.listen({
-  port: env.PORT
+  port: env.PORT,
+  host: '0.0.0.0'
 }).then(() => {
-  console.log('Server running.')
+  console.log(`Server running on ${PORT}.`)
 })
