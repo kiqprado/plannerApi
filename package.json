@@ -4,6 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch --env-file .env src/server.ts",
+    "build": "echo 'build step not needed with tsx'",
+    "start": "tsx src/server.ts",
+    
     "db:dev": "prisma db push --schema=./prisma/dev/schema.prisma",
     "db:prod": "prisma db push --schema=./prisma/prod/schema.prisma",
     "generate:dev": "prisma generate --schema=./prisma/dev/schema.prisma",
