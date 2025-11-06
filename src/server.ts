@@ -36,7 +36,7 @@ import { errorHandler } from './error-handler'
 const app = fastify()
 
 app.register(cors, {
-  origin: true
+  origin: "https://planner-web-lac.vercel.app/"
 })
 
 app.setValidatorCompiler(validatorCompiler)
