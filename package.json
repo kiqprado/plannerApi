@@ -10,7 +10,8 @@
     "db:dev": "prisma db push --schema=./prisma/dev/schema.prisma",
     "db:prod": "prisma db push --schema=./prisma/prod/schema.prisma",
     "generate:dev": "prisma generate --schema=./prisma/dev/schema.prisma",
-    "generate:prod": "prisma generate --schema=./prisma/prod/schema.prisma"
+    "migrate:prod": "prisma migrate deploy --schema=./prisma/prod/schema.prisma"
+
   },
   "keywords": [],
   "author": "",
