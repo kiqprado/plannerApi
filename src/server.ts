@@ -37,7 +37,7 @@ const app = fastify()
 
 app.register(cors, {
   origin:  [
-    "https://planner-web-lac.vercel.app/",
+    "https://planner-web-lac.vercel.app",
     "http://localhost:3000"
   ]
 })
