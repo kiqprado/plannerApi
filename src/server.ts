@@ -39,13 +39,6 @@ app.register(cors, {
   origin: true
 })
 
-app.options('*', (req, reply) => {
-  reply.header('Access-Control-Allow-Origin', '*')
-  reply.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS')
-  reply.header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-  reply.status(204).send()
-})
-
 app.setValidatorCompiler(validatorCompiler)
 app.setSerializerCompiler(serializerCompiler)
 
