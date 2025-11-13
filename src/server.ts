@@ -36,7 +36,9 @@ import { errorHandler } from './error-handler'
 const app = fastify()
 
 app.register(cors, {
-  origin: true
+  origin: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 })
 
 app.setValidatorCompiler(validatorCompiler)
