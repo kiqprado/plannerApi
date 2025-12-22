@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "_version": "22.0.0",
+
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+
+    "rootDir": "src",
+    "outDir": "dist",
+
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+
+    "typeRoots": [
+     "./node_modules/@types",
+     "./src/types"
+    ]
+  },
+
+  "paths": {
+    "@/*": ["src/*"]
+  },
+
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}
