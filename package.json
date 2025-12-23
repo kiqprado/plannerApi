@@ -4,17 +4,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-
     "build": "prisma generate --schema=./prisma/schema.prisma && tsc",
-
     "start": "node dist/server.js",
-
     "clean": "rm -rf dist",
-
     "generate": "prisma generate --schema=./prisma/schema.prisma",
-
     "migrate": "prisma migrate dev --schema=./prisma/schema.prisma --name init",
-
     "migrate:deploy": "prisma migrate deploy --schema=./prisma/schema.prisma"
   },
   "keywords": [],
@@ -22,17 +16,17 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@prisma/client": "^7.2.0",
     "@types/node": "^22.10.10",
     "@types/nodemailer": "^6.4.21",
     "i": "^0.3.7",
     "npm": "^11.7.0",
-    "prisma": "^7.2.0",
     "tsx": "^4.19.2",
     "typescript": "^5.7.3"
   },
   "dependencies": {
     "@fastify/cors": "^10.0.2",
+    "prisma": "^7.2.0",
+    "@prisma/client": "^7.2.0",
     "@prisma/adapter-pg": "^7.0.1",
     "better-sqlite3": "^12.4.6",
     "dayjs": "^1.11.13",
